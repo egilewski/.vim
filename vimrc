@@ -74,6 +74,7 @@ Bundle 'gmarik/vundle'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Bundle 'tpope/vim-rails.git'
 Bundle 'ervandew/supertab'
+Bundle 'scrooloose/nerdcommenter'
 " vim-scripts repos
 " Bundle 'L9'
 " Bundle 'FuzzyFinder'
