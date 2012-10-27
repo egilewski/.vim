@@ -51,6 +51,9 @@ set fileencodings=utf-8,cp1251,cp866,koi8-u
 highlight ExtraWhitespace ctermbg=red guibg=red
 autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 
+" SuperTab
+let g:SuperTabDefaultCompletionType = "context"
+
 """"""""""
 " Vundle "
 """"""""""
@@ -70,6 +73,7 @@ Bundle 'gmarik/vundle'
 " Bundle 'Lokaltog/vim-easymotion'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Bundle 'tpope/vim-rails.git'
+Bundle 'ervandew/supertab'
 " vim-scripts repos
 " Bundle 'L9'
 " Bundle 'FuzzyFinder'
