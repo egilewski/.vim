@@ -54,6 +54,14 @@ autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
 
+" Syntastic
+let g:syntastic_check_on_open=1
+" Signs
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_style_error_symbol='s✗'
+let g:syntastic_style_warning_symbol='s⚠'
+
 """"""""""
 " Vundle "
 """"""""""
@@ -74,6 +82,7 @@ Bundle 'gmarik/vundle'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Bundle 'tpope/vim-rails.git'
 Bundle 'ervandew/supertab'
+Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdcommenter'
 " vim-scripts repos
 " Bundle 'L9'
