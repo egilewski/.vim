@@ -231,3 +231,10 @@ function! RotateFEnc()
     endif
   endwhile
 endfunction
+
+" Use for debugging.
+"augroup vimrc
+"au!
+    "" Auto reload vim settins
+    "autocmd BufWritePost * source ~/.vimrc
+"augroup END
