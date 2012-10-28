@@ -53,14 +53,23 @@ autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabClosePreviewOnPopupClose = 1
 
-" Syntastic
-let g:syntastic_check_on_open=1
-" Signs
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_style_error_symbol='s✗'
-let g:syntastic_style_warning_symbol='s⚠'
+"""""""""""""""
+" Python-mode "
+"""""""""""""""
+" Python-mode code checking
+let g:pymode_lint_checker = "pep8,pyflakes,pylint,mccabe"
+let g:pymode_lint_cwindow = 0
+let g:pymode_lint_onfly = 1
+" Python rope
+let g:pymode_rope_goto_def_newwin = "new"
+let g:pymode_rope_guess_project = 0
+let g:pymode_rope_vim_completion=1
+:map <Leader>g :call RopeGotoDefinition()<cr>
+"""""""""""""""""""
+" End Python-mode "
+"""""""""""""""""""
 
 """"""""""
 " Vundle "
@@ -81,9 +90,10 @@ Bundle 'gmarik/vundle'
 " Bundle 'Lokaltog/vim-easymotion'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Bundle 'tpope/vim-rails.git'
+"Bundle 'scrooloose/syntastic'
 Bundle 'ervandew/supertab'
-Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'klen/python-mode'
 " vim-scripts repos
 " Bundle 'L9'
 " Bundle 'FuzzyFinder'
