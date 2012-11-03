@@ -70,6 +70,9 @@ let g:SuperTabClosePreviewOnPopupClose = 1
 " Jedi Python autocompletion.
 let g:jedi#popup_on_dot = 0
 
+" restore_view
+set viewoptions=cursor,folds,slash,unix
+
 """""""""""""""
 " Python-mode "
 """""""""""""""
@@ -113,6 +116,7 @@ Bundle 'davidhalter/jedi-vim'
 " vim-scripts repos
 " Bundle 'L9'
 " Bundle 'FuzzyFinder'
+Bundle 'restore_view.vim'
 " non github repos
 " Bundle 'git://git.wincent.com/command-t.git'
 "
@@ -130,32 +134,6 @@ filetype plugin indent on     " required!
 """"""""""""""
 " End Vundle "
 """"""""""""""
-
-"""""""""""""""""""""""""""
-" Restore cursor position "
-"""""""""""""""""""""""""""
-" Tell vim to remember certain things when we exit
-"  '100 :  marks will be remembered for up to 100 previously edited files
-"  "100 :  will save up to 100 lines for each register
-"  :20  :  up to 20 lines of command-line history will be remembered
-"  %    :  saves and restores the buffer list
-"  n... :  where to save the viminfo files
-set viminfo='100,\"100,:20,%,n~/.viminfo
-
-function! ResCur()
-  if line("'\"") <= line("$")
-    normal! g`"
-    return 1
-  endif
-endfunction
-
-augroup resCur
-  autocmd!
-  autocmd BufWinEnter * call ResCur()
-augroup END
-"""""""""""""""""""""""""""""""
-" End Restore cursor position "
-"""""""""""""""""""""""""""""""
 
 " Run python on this program when pressing F9
 nmap <silent> <F9> :w<CR>:!%:p<CR>
