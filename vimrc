@@ -67,18 +67,21 @@ map <c-h> <c-w>h
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabClosePreviewOnPopupClose = 1
 
+" Jedi Python autocompletion.
+let g:jedi#popup_on_dot = 0
+
 """""""""""""""
 " Python-mode "
 """""""""""""""
+let g:pymode_options = 0
 " Python-mode code checking
 let g:pymode_lint_checker = "pep8,pyflakes,pylint,mccabe"
 let g:pymode_lint_cwindow = 0
 let g:pymode_lint_onfly = 1
-" Python rope
+" Python-mode rope
+let g:pymode_rope = 0
 let g:pymode_rope_goto_def_newwin = "new"
-let g:pymode_rope_guess_project = 0
-let g:pymode_rope_vim_completion=1
-:map <Leader>g :call RopeGotoDefinition()<cr>
+let g:pymode_rope_vim_completion = 1
 """""""""""""""""""
 " End Python-mode "
 """""""""""""""""""
@@ -106,6 +109,7 @@ Bundle 'gmarik/vundle'
 Bundle 'ervandew/supertab'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'klen/python-mode'
+Bundle 'davidhalter/jedi-vim'
 " vim-scripts repos
 " Bundle 'L9'
 " Bundle 'FuzzyFinder'
