@@ -80,7 +80,7 @@ let g:pymode_options = 0
 " Python-mode code checking
 let g:pymode_lint_checker = "pep8,pyflakes,pylint,mccabe"
 let g:pymode_lint_cwindow = 0
-let g:pymode_lint_onfly = 1
+let g:pymode_lint_onfly = 0
 " Python-mode rope
 let g:pymode_rope = 0
 let g:pymode_rope_goto_def_newwin = "new"
