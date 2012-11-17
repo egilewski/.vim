@@ -57,6 +57,9 @@ map <Down> <nop>
 map <left> <nop>
 map <right> <nop>
 
+" But I want mouse wheel to work.
+set mouse=a
+
 " Moving aroud windows.
 map <c-j> <c-w>j
 map <c-k> <c-w>k
