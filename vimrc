@@ -120,6 +120,7 @@ Bundle 'davidhalter/jedi-vim'
 " Bundle 'L9'
 " Bundle 'FuzzyFinder'
 Bundle 'restore_view.vim'
+Bundle 'fugitive.vim'
 " non github repos
 " Bundle 'git://git.wincent.com/command-t.git'
 "
