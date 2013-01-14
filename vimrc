@@ -125,6 +125,7 @@ Bundle 'ervandew/supertab'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'klen/python-mode'
 Bundle 'davidhalter/jedi-vim'
+Bundle 'bogado/file-line'
 Bundle 'vim-scripts/git-file.vim'
 " vim-scripts repos
 " Bundle 'L9'
