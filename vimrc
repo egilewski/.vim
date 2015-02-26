@@ -5,7 +5,6 @@
 "set ai
 "set si
 "set cin
-syntax on
 " Commented out for Vundle.
 "filetype on
 "filetype plugin on
@@ -81,6 +80,7 @@ let g:SuperTabClosePreviewOnPopupClose = 1
 
 " Jedi Python autocompletion.
 let g:jedi#popup_on_dot = 0
+let g:jedi#show_call_signature = 1
 
 " restore_view
 set viewoptions=cursor,folds,slash,unix
@@ -88,9 +88,12 @@ set viewoptions=cursor,folds,slash,unix
 """""""""""""""
 " Python-mode "
 """""""""""""""
+let g:pymode_virtualenv = 1
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
 let g:pymode_options = 0
 " Python-mode code checking
-let g:pymode_lint_checker = "pep8,pyflakes,pylint,mccabe"
+let g:pymode_lint_checker = "pyflakes,pylint,mccabe"
 let g:pymode_lint_cwindow = 0
 let g:pymode_lint_onfly = 0
 " Python-mode rope
@@ -106,12 +109,12 @@ let g:pymode_rope_vim_completion = 1
 """"""""""
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " My Bundles here:
 "
@@ -121,20 +124,24 @@ Bundle 'gmarik/vundle'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Bundle 'tpope/vim-rails.git'
 "Bundle 'scrooloose/syntastic'
-Bundle 'ervandew/supertab'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'klen/python-mode'
-Bundle 'davidhalter/jedi-vim'
-Bundle 'bogado/file-line'
-Bundle 'vim-scripts/git-file.vim'
+Plugin 'ervandew/supertab'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'klen/python-mode'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'bogado/file-line'
+Plugin 'vim-scripts/git-file.vim'
+Plugin 'kchmck/vim-coffee-script'
 " vim-scripts repos
 " Bundle 'L9'
 " Bundle 'FuzzyFinder'
-Bundle 'restore_view.vim'
-Bundle 'fugitive.vim'
+Plugin 'restore_view.vim'
+Plugin 'fugitive.vim'
 " non github repos
 " Bundle 'git://git.wincent.com/command-t.git'
 "
+call vundle#end()
+
+syntax enable
 filetype plugin indent on     " required!
 
 " Brief help
