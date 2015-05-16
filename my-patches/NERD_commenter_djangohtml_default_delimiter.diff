@@ -1,0 +1,13 @@
+diff --git a/plugin/NERD_commenter.vim b/plugin/NERD_commenter.vim
+index 2d209cd..2e802bb 100644
+--- a/plugin/NERD_commenter.vim
++++ b/plugin/NERD_commenter.vim
+@@ -191,7 +191,7 @@ let s:delimiterMap = {
+     \ 'hog': { 'left': '#' },
+     \ 'hostsaccess': { 'left': '#' },
+     \ 'htmlcheetah': { 'left': '##' },
+-    \ 'htmldjango': { 'left': '<!--','right': '-->', 'leftAlt': '{#', 'rightAlt': '#}' },
++    \ 'htmldjango': { 'left': '{#', 'right': '#}', 'leftAlt': '<!--','rightAlt': '-->' },
+     \ 'htmlos': { 'left': '#', 'right': '/#' },
+     \ 'hxml': { 'left': '#' },
+     \ 'ia64': { 'left': '#' },

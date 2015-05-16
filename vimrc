@@ -12,10 +12,10 @@ colorscheme delek
 set showcmd
 set statusline=%t%m%r%h%w\ [%{&ff}]\ %y\ [\%03.3b/0x\%02.2B]%=[%l(%L\),\ %v]\ [%p%%]
 set laststatus=2
-set cc=81
-autocmd FileType python set cc=80
-autocmd FileType html set cc=0
-autocmd FileType htmldjango set cc=0
+set colorcolumn=+1
+autocmd FileType python set colorcolumn=+1
+autocmd FileType html set colorcolumn=0
+autocmd FileType htmldjango set colorcolumn=0
 set highlight=sb
 set scrolloff=100
 set undofile
@@ -70,20 +70,28 @@ map <c-h> <c-w>h
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
         \ | wincmd p | diffthis
 
+" Show sign column all the time in Python files.
+autocmd FileType python sign define dummy
+autocmd FileType python 
+            \ execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+
 """"""""""""
 " Plugins. "
 """"""""""""
 
-" SuperTab.
+" SuperTab
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabClosePreviewOnPopupClose = 1
 
-" Jedi Python autocompletion.
+" Jedi Python
 let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signature = 1
 
+" NERD Commenter
+let g:NERDSpaceDelims = 1
+
 " restore_view
-set viewoptions=cursor,folds,slash,unix
+set viewoptions=cursor,folds
 
 """""""""""""""
 " Python-mode "
@@ -93,9 +101,22 @@ let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_options = 0
 " Python-mode code checking
-let g:pymode_lint_checker = "pyflakes,pylint,mccabe"
+let g:pymode_lint_checkers = 
+            \ ['pylint', 'pep8', 'mccabe', 'pep257', 'pyflakes']
+let g:pymode_lint_unmodified = 1
+let g:pymode_lint_on_fly = 1
+let g:pymode_lint_sort = ['E', 'F', 'R', 'W', 'D', 'C', 'I']
 let g:pymode_lint_cwindow = 0
-let g:pymode_lint_onfly = 0
+
+let g:pymode_lint_todo_symbol = 'TD'
+let g:pymode_lint_docs_symbol = 'DC'
+let g:pymode_lint_comment_symbol = 'CM'
+let g:pymode_lint_visual_symbol = 'RR'
+let g:pymode_lint_error_symbol = 'ER'
+let g:pymode_lint_info_symbol = 'IN'
+let g:pymode_lint_pyflakes_symbol = 'FL'
+" Python-mode folding
+let g:pymode_folding_nest_limit = 10000
 " Python-mode rope
 let g:pymode_rope = 0
 let g:pymode_rope_goto_def_newwin = "new"
@@ -111,19 +132,9 @@ filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
-" let Vundle manage Vundle
-" required! 
-Plugin 'gmarik/vundle'
-
-" My Bundles here:
-"
+" Let Vundle manage Vundle. required! 
+Plugin 'gmarik/Vundle.vim'
 " original repos on github
-" Bundle 'tpope/vim-fugitive'
-" Bundle 'Lokaltog/vim-easymotion'
-" Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Bundle 'tpope/vim-rails.git'
-"Bundle 'scrooloose/syntastic'
 Plugin 'ervandew/supertab'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'klen/python-mode'
@@ -131,14 +142,12 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'bogado/file-line'
 Plugin 'vim-scripts/git-file.vim'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'jimf/vim-pep8-text-width'
 " vim-scripts repos
-" Bundle 'L9'
-" Bundle 'FuzzyFinder'
 Plugin 'restore_view.vim'
 Plugin 'fugitive.vim'
 " non github repos
 " Bundle 'git://git.wincent.com/command-t.git'
-"
 call vundle#end()
 
 syntax enable

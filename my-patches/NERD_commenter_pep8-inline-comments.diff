@@ -1,0 +1,24 @@
+diff --git a/plugin/NERD_commenter.vim b/plugin/NERD_commenter.vim
+index b7ba977..2d209cd 100644
+--- a/plugin/NERD_commenter.vim
++++ b/plugin/NERD_commenter.vim
+@@ -521,7 +521,7 @@ endfunction
+ " This function appends comment delimiters at the EOL and places the cursor in
+ " position to start typing the comment
+ function s:AppendCommentToLine()
+-    let left = s:Left({'space': 1})
++    let left = s:Left({'space': 1, 'prefix': ' '})
+     let right = s:Right({'space': 1})
+ 
+     " get the len of the right delim
+@@ -2385,6 +2385,10 @@ function s:Left(...)
+         return ''
+     endif
+ 
++    if has_key(params, 'prefix') && g:NERDSpaceDelims
++        let delim = params['prefix'] . delim
++    endif
++
+     if has_key(params, 'space') && g:NERDSpaceDelims
+         let delim = delim . s:spaceStr
+     endif

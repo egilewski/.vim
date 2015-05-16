@@ -1,0 +1,20 @@
+diff --git a/ftplugin/python.vim b/ftplugin/python.vim
+index 22c4976..210d1c1 100644
+--- a/ftplugin/python.vim
++++ b/ftplugin/python.vim
+@@ -22,9 +22,12 @@ augroup END
+ 
+ " Return appropriate textwidth for cursor position (leverages syntax engine).
+ function! s:GetCurrentTextWidth()
+-    let curr_syntax = synIDattr(synIDtrans(synID(line("."), col("."), 0)), "name")
+-    let prev_syntax = synIDattr(synIDtrans(synID(line("."), col(".")-1, 0)), "name")
+-    if curr_syntax =~ 'Comment\|Constant' || prev_syntax =~ 'Comment\|Constant'
++    let comments_syntax_names_regex =
++                \ 'pythonDocstring\|pythonString\|pythonComment'
++    let curr_syntax = synIDattr(synID(line("."), col("."), 0), "name")
++    let prev_syntax = synIDattr(synID(line("."), col(".")-1, 0), "name")
++    if curr_syntax =~ comments_syntax_names_regex ||
++                \ prev_syntax =~ comments_syntax_names_regex
+         return g:pep8_comment_text_width
+     endif
+ 
