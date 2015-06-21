@@ -1,3 +1,6 @@
+" Load user configuration that should come first.
+runtime vimrc_local_prepend
+
 "set cin!
 "set et!
 "set ts=2
@@ -12,6 +15,8 @@ colorscheme delek
 set showcmd
 set statusline=%t%m%r%h%w\ [%{&ff}]\ %y\ [\%03.3b/0x\%02.2B]%=[%l(%L\),\ %v]\ [%p%%]
 set laststatus=2
+set textwidth=80
+autocmd FileType gitcommit set textwidth=72
 set colorcolumn=+1
 autocmd FileType python set colorcolumn=+1
 autocmd FileType html set colorcolumn=0
@@ -93,6 +98,9 @@ let g:NERDSpaceDelims = 1
 " restore_view
 set viewoptions=cursor,folds
 
+" local_vimrc
+let g:local_vimrc = ".vimrc_local.vim"
+
 """""""""""""""
 " Python-mode "
 """""""""""""""
@@ -101,12 +109,10 @@ let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_options = 0
 " Python-mode code checking
-let g:pymode_lint_checkers = 
-            \ ['pylint', 'pep8', 'mccabe', 'pep257', 'pyflakes']
-let g:pymode_lint_unmodified = 1
-let g:pymode_lint_on_fly = 1
+let g:pymode_lint_checkers = ['pylint', 'pep8', 'mccabe', 'pep257', 'pyflakes']
 let g:pymode_lint_sort = ['E', 'F', 'R', 'W', 'D', 'C', 'I']
 let g:pymode_lint_cwindow = 0
+let g:pymode_lint_on_fly = 1
 
 let g:pymode_lint_todo_symbol = 'TD'
 let g:pymode_lint_docs_symbol = 'DC'
@@ -115,8 +121,6 @@ let g:pymode_lint_visual_symbol = 'RR'
 let g:pymode_lint_error_symbol = 'ER'
 let g:pymode_lint_info_symbol = 'IN'
 let g:pymode_lint_pyflakes_symbol = 'FL'
-" Python-mode folding
-let g:pymode_folding_nest_limit = 10000
 " Python-mode rope
 let g:pymode_rope = 0
 let g:pymode_rope_goto_def_newwin = "new"
@@ -146,6 +150,9 @@ Plugin 'jimf/vim-pep8-text-width'
 " vim-scripts repos
 Plugin 'restore_view.vim'
 Plugin 'fugitive.vim'
+" Dependency for local_vimrc
+Plugin 'LucHermitte/lh-vim-lib'
+Plugin 'LucHermitte/local_vimrc'
 " non github repos
 " Bundle 'git://git.wincent.com/command-t.git'
 call vundle#end()
@@ -165,6 +172,9 @@ filetype plugin indent on     " required!
 """"""""""""""
 " End Vundle "
 """"""""""""""
+
+map <F2> :PymodeLint<CR>
+map! <F2> <esc><F2>
 
 " Run python on this program when pressing F9
 nmap <silent> <F9> :w<CR>:!%:p<CR>
